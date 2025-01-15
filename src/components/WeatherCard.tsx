@@ -12,11 +12,17 @@ export const WeatherCard = ({ data, location }: WeatherCardProps) => {
   const weatherInfo = weatherCodeToDescription[data.current.weather_code];
   const todayIndex = data.daily.time.length - 1; // Get the last index for today
 
+  // Capitalize location name
+  const capitalizedLocation = location
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex justify-between items-start mb-12">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800">{location}</h2>
+          <h2 className="text-2xl font-semibold text-gray-800">{capitalizedLocation}</h2>
           <p className="text-gray-600 text-sm">
             {new Date(data.current.time).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>

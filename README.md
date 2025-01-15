@@ -4,12 +4,24 @@ A modern, responsive weather forecast application built with Next.js and TypeScr
 
 ## Key Features
 
-- **Current Weather Display**: Temperature, weather conditions, and day/night cycles
-- **3-Day Forecast**: Detailed weather predictions including high/low temperatures
-- **Location Search**: Easy city-based weather lookup
-- **Responsive Design**: Optimized for both desktop and mobile devices
-- **Real-time Updates**: Automatic data refresh using React Query
-- **Smooth Animations**: Fade-in and slide effects when weather data loads
+- **Smart Location Search**:
+  - Intelligent city suggestions with state/country context
+  - Population-based ranking for major cities
+  - Special handling for cities with multiple locations
+  - Real-time search suggestions
+
+- **Weather Information**:
+  - Current temperature and conditions
+  - High/low temperature forecasts
+  - Sunrise and sunset times
+  - 3-day weather forecast
+  - Weather condition icons
+
+- **User Experience**:
+  - Responsive design for all devices
+  - Smooth animations and transitions
+  - Intelligent error handling
+  - Loading state indicators
 
 ## Technology Stack
 
@@ -19,7 +31,7 @@ A modern, responsive weather forecast application built with Next.js and TypeScr
 - **State Management**: React Query (TanStack Query)
 - **HTTP Client**: Axios
 - **UI Components**: 
-  - Framer Motion (fade and slide animations)
+  - Framer Motion (animations)
   - Hero Icons
 - **API**: Open-Meteo (free, no API key required)
 
@@ -53,32 +65,51 @@ src/
 │   ├── WeatherCard.tsx
 │   └── ForecastSection.tsx
 ├── hooks/           # Custom React hooks
-│   └── useWeather.ts
+│   ├── useWeather.ts
+│   └── useCitySuggestions.ts
 ├── services/        # API integration
 │   └── weatherApi.ts
 └── types/           # TypeScript type definitions
     └── weather.ts
 ```
 
-## Component Architecture
+## Features in Detail
 
-- **SearchBar**: Handles user input for location search
-- **WeatherCard**: Displays current weather information including:
-  - Current temperature
-  - Weather condition with icon
-  - High/low temperatures
-  - Sunrise/sunset times
-- **ForecastSection**: Shows 3-day weather forecast with:
-  - Daily weather conditions
-  - Temperature ranges
-  - Date information
+### Intelligent Search
+- Smart city suggestions with context
+- Population-based city ranking
+- Duplicate city handling
+- Real-time search updates
 
-## API Integration
+### Weather Display
+- Current conditions
+- Temperature ranges
+- Sunrise/sunset times
+- 3-day forecast
+- Weather icons
 
-The application uses the Open-Meteo API for weather data:
-- Geocoding API for converting city names to coordinates
-- Weather Forecast API for retrieving weather data
-- No API key required, making it simple to set up and deploy
+### User Interface
+- Clean, modern design
+- Responsive layouts
+- Loading indicators
+- Error messages
+- Smooth transitions
+
+## Browser Support
+
+Supports all modern browsers including:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Performance Considerations
+
+- Efficient data fetching with React Query
+- Debounced search inputs
+- Optimized re-renders
+- Lazy loading components
+- Proper error boundaries
 
 ## Build and Deployment
 
@@ -88,18 +119,3 @@ npm run build
 ```
 
 The application can be deployed to any platform that supports Next.js, such as Vercel, Netlify, or traditional hosting services.
-
-## Performance Considerations
-
-- Efficient data fetching with React Query
-- Optimized images and icons
-- Responsive design principles
-- Smooth animations for enhanced UX
-
-## Browser Support
-
-Supports all modern browsers including:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
