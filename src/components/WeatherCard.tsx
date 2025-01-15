@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { WeatherData, weatherCodeToDescription } from '../types/weather';
 
 interface WeatherCardProps {
@@ -14,11 +13,7 @@ export const WeatherCard = ({ data, location }: WeatherCardProps) => {
   const todayIndex = data.daily.time.length - 1; // Get the last index for today
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-xl shadow-lg p-8"
-    >
+    <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex justify-between items-start mb-12">
         <div>
           <h2 className="text-2xl font-semibold text-gray-800">{location}</h2>
@@ -67,6 +62,6 @@ export const WeatherCard = ({ data, location }: WeatherCardProps) => {
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

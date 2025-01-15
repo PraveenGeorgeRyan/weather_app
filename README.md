@@ -9,7 +9,7 @@ A modern, responsive weather forecast application built with Next.js and TypeScr
 - **Location Search**: Easy city-based weather lookup
 - **Responsive Design**: Optimized for both desktop and mobile devices
 - **Real-time Updates**: Automatic data refresh using React Query
-- **Smooth Animations**: Enhanced user experience with Framer Motion
+- **Smooth Animations**: Fade-in and slide effects when weather data loads
 
 ## Technology Stack
 
@@ -19,7 +19,7 @@ A modern, responsive weather forecast application built with Next.js and TypeScr
 - **State Management**: React Query (TanStack Query)
 - **HTTP Client**: Axios
 - **UI Components**: 
-  - Framer Motion (animations)
+  - Framer Motion (fade and slide animations)
   - Hero Icons
 - **API**: Open-Meteo (free, no API key required)
 

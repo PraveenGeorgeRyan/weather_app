@@ -1,8 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { WeatherData, weatherCodeToDescription } from '../types/weather';
-import { format } from 'date-fns';
 
 interface ForecastSectionProps {
   data: WeatherData;

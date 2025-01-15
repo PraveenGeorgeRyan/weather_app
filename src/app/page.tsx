@@ -29,6 +29,21 @@ function WeatherApp() {
     setLocation(searchLocation);
   };
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   useEffect(() => {
     console.log("Data changed:", data);
   }, [data]);
@@ -36,19 +51,42 @@ function WeatherApp() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-blue-200 py-8 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Weather Forecast</h1>
+        <motion.h1 
+          className="text-4xl font-bold text-center text-gray-800 mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Weather Forecast
+        </motion.h1>
         
-        <SearchBar onSearch={handleSearch} />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <SearchBar onSearch={handleSearch} />
+        </motion.div>
 
         {isLoading && (
-          <div className="text-center py-20">
+          <motion.div 
+            className="text-center py-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
             <p className="mt-2 text-gray-600">Loading weather data...</p>
-          </div>
+          </motion.div>
         )}
 
         {error && (
-          <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+          <motion.div 
+            className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+          >
             <div className="flex">
               <div className="flex-shrink-0">
                 <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -61,17 +99,23 @@ function WeatherApp() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {data && !error && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="space-y-6"
           >
-            <WeatherCard data={data} location={location} />
-            <ForecastSection data={data} />
+            <motion.div variants={item}>
+              <WeatherCard data={data} location={location} />
+            </motion.div>
+            
+            <motion.div variants={item}>
+              <ForecastSection data={data} />
+            </motion.div>
           </motion.div>
         )}
       </div>
