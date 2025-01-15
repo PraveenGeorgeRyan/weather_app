@@ -1,101 +1,105 @@
-# Weather App
+# Weather Forecast Application
 
-A modern, responsive weather application built with Next.js, TypeScript, and Tailwind CSS. This application provides real-time weather information and forecasts with an intuitive user interface.
+A modern, responsive weather forecast application built with Next.js and TypeScript. The application provides real-time weather information and 3-day forecasts using the Open-Meteo API, featuring a clean and intuitive user interface.
 
-## Features
+## Key Features
 
-- Real-time weather data display
-- 3-day weather forecast
-- Responsive design for all devices
-- Dynamic weather icons
-- Smooth animations and transitions
-- Error handling with user-friendly messages
-- Multiple location support
+- **Current Weather Display**: Temperature, weather conditions, and day/night cycles
+- **3-Day Forecast**: Detailed weather predictions including high/low temperatures
+- **Location Search**: Easy city-based weather lookup
+- **Responsive Design**: Optimized for both desktop and mobile devices
+- **Real-time Updates**: Automatic data refresh using React Query
+- **Smooth Animations**: Enhanced user experience with Framer Motion
 
-## Tech Stack
+## Technology Stack
 
-- Next.js 13+
-- TypeScript
-- Tailwind CSS
-- Framer Motion (animations)
-- Axios (API requests)
-- React Icons
-- Hero Icons
-- React Query (data fetching)
-- Date-fns (date formatting)
+- **Framework**: Next.js 13+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: React Query (TanStack Query)
+- **HTTP Client**: Axios
+- **UI Components**: 
+  - Framer Motion (animations)
+  - Hero Icons
+- **API**: Open-Meteo (free, no API key required)
 
 ## Getting Started
 
-1. Clone the repository
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ShoshinTech22/Recruitment-2661-Praveen-George-Ryan.git
+   cd weather-app
+   ```
+
 2. Install dependencies:
    ```bash
    npm install
    ```
-3. Create a `.env.local` file and add your API key:
-   ```
-   NEXT_PUBLIC_WEATHER_API_KEY=your_api_key_here
-   ```
-4. Run the development server:
+
+3. Start the development server:
    ```bash
    npm run dev
    ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Project Structure
 
 ```
 src/
-├── components/        # Reusable React components
-├── hooks/            # Custom React hooks
-├── types/            # TypeScript type definitions
-├── utils/            # Utility functions
-├── services/         # API service functions
-└── styles/           # Global styles and Tailwind config
+├── app/              # Next.js app router components
+├── components/       # Reusable UI components
+│   ├── SearchBar.tsx
+│   ├── WeatherCard.tsx
+│   └── ForecastSection.tsx
+├── hooks/           # Custom React hooks
+│   └── useWeather.ts
+├── services/        # API integration
+│   └── weatherApi.ts
+└── types/           # TypeScript type definitions
+    └── weather.ts
 ```
 
-## Components
+## Component Architecture
 
-- `WeatherCard`: Main weather display component
-- `ForecastSection`: 3-day forecast display
-- `WeatherIcon`: Dynamic weather condition icons
-- `ErrorBoundary`: Graceful error handling
-- `LoadingSpinner`: Loading state component
+- **SearchBar**: Handles user input for location search
+- **WeatherCard**: Displays current weather information including:
+  - Current temperature
+  - Weather condition with icon
+  - High/low temperatures
+  - Sunrise/sunset times
+- **ForecastSection**: Shows 3-day weather forecast with:
+  - Daily weather conditions
+  - Temperature ranges
+  - Date information
 
 ## API Integration
 
-The app uses a weather API to fetch current weather and forecast data. All API calls are handled through custom hooks using React Query for efficient caching and state management.
+The application uses the Open-Meteo API for weather data:
+- Geocoding API for converting city names to coordinates
+- Weather Forecast API for retrieving weather data
+- No API key required, making it simple to set up and deploy
 
-## Responsive Design
+## Build and Deployment
 
-The application is fully responsive and works seamlessly across:
-- Mobile devices
-- Tablets
-- Desktop computers
-
-## Error Handling
-
-- Comprehensive error boundaries
-- User-friendly error messages
-- Loading states for better UX
-- Network error handling
-
-## Performance Optimization
-
-- Image optimization
-- Code splitting
-- Efficient data caching
-- Minimized bundle size
-
-## Testing
-
-Run tests using:
+Build the application:
 ```bash
-npm run test
+npm run build
 ```
 
-## Contributing
+The application can be deployed to any platform that supports Next.js, such as Vercel, Netlify, or traditional hosting services.
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+## Performance Considerations
+
+- Efficient data fetching with React Query
+- Optimized images and icons
+- Responsive design principles
+- Smooth animations for enhanced UX
+
+## Browser Support
+
+Supports all modern browsers including:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
